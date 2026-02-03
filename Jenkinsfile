@@ -10,7 +10,7 @@ stage('Checkout code')
 {
 steps
 {
-	branch='main',
+	git branch:'main',
 	url='git@github.com:mahendrasimhars-0402/my-react-app.git'
 }
 }
