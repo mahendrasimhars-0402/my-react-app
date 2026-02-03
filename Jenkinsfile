@@ -25,7 +25,7 @@ stage('Build docker Image')
 {
 steps
 {
-scripts
+script
 {
 	dockerImage=docker.build("${IMAGE_NAME}:latest")
 }
@@ -35,7 +35,7 @@ stage('Push Image to DockerHub')
 {
 steps
 {
-scripts
+script
 {
 	docker.withRegistry('http://index.docker.io/v1/', dockerhub){
 	dockerImage.push()
