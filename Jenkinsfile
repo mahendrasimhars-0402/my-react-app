@@ -10,8 +10,8 @@ stage('Checkout code')
 {
 steps
 {
-	git branch:'main',
-	url='git@github.com:mahendrasimhars-0402/my-react-app.git'
+	git branch: 'main',
+	url: 'git@github.com:mahendrasimhars-0402/my-react-app.git'
 }
 }
 stage('Install Dependencies')
