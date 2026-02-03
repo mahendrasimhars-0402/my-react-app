@@ -1,18 +1,17 @@
 pipeline {
+
     agent any
 
     environment {
-        IMAGE_NAME = 'mahendrasimha0403/my-react-app'
-        DOCKERHUB_CREDENTIALS = 'dockerhub'
+        IMAGE_NAME = "mahendrasimha0403/my-react-app"
     }
 
     stages {
 
-        stage('Checkout code') {
+        stage('Checkout Code') {
             steps {
                 git branch: 'main',
-                    url: 'git@github.com:mahendrasimhars-0402/my-react-app.git',
-                    credentialsId: 'github-ssh-key'
+                url: 'git@github.com:mahendrasimhars-0402/my-react-app.git'
             }
         }
 
@@ -30,11 +29,11 @@ pipeline {
             }
         }
 
-        stage('Push Image to DockerHub') {
+        stage('Push To Docker Hub') {
             steps {
                 script {
-                    docker.withRegistry('https://index.docker.io/v1/', DOCKERHUB_CREDENTIALS) {
-                        dockerImage.push('latest')
+                    docker.withRegistry('https://index.docker.io/v1/', 'dockerhub') {
+                        dockerImage.push()
                     }
                 }
             }
@@ -43,10 +42,10 @@ pipeline {
 
     post {
         success {
-            echo "Pipeline build successfully!"
+            echo "Pipeline Success "
         }
         failure {
-            echo "Pipeline build Failed!"
+            echo "Pipeline Failed "
         }
     }
 }
